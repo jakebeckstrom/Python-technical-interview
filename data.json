@@ -1,0 +1,24 @@
+{
+    "Employees": [
+        {
+            "Name": "John Smith",
+            "Email": "John123@gmail.com",
+            "Experience": "4"
+        },
+        {
+            "Name": "Jane Doe",
+            "Email": "Doe.Jane@yahoo.com",
+            "Experience": "0"
+        },
+        {
+            "Name": "Thomas Brady",
+            "Email": "brady@yahoo.com",
+            "Experience": "1"
+        },
+        {
+            "Name": "Elizabeth Queen",
+            "Email": "royal123@yahoo.com",
+            "Experience": "2"
+        }
+    ]
+}
