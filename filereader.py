@@ -1,61 +1,63 @@
 import json
 
 class Employee:
+    """Data Class to store employee details from file"""
 
     def __init__(self, employee):
-        self.name = employee.get("Name")
-        self.email = employee.get("Email")
-        self.experience = employee.get("Experience", 0)
+        self.employee = employee
 
     @property
     def name(self):
-        return self.name
+        return self.employee.get("name", None)
 
     @property
     def email(self):
-        return self.email
+        return self.employee.get("email", None)
 
     @property
     def experience(self):
-        return self.experience
+        return self.employee.get("Experience", 0)
 
-    # @experience.setter
-    # def experience(self, new):
-    #     self.experience = new
 
-class Employees:
+
+class FileReader:
 
     def __init__(self, filename):
-        data = self.read_file(filename)
-        self.employees = [Employee(data) for i in data]
+        self.filename = filename
+        data = self.read_file()
+        self.employees = [Employee(i) for i in data["Employees"]]
 
-    def read_file(self, filename):
-        with open(filename, 'w') as file:
+
+    def read_file():
+        """Open the file and read contents into a dictionary"""
+        with open(self.filename, 'r') as file:
             data = json.load(file)
         return data
+
 
     def update_experience(self):
         """Add one to each employees experience."""
         pass
 
 
+    def generate_new_emails(self, data):
+        """
+            Return a list of emails with the new company domain
 
-def generate_new_emails(data):
-    """
-        Return a list of emails with the new company domain
+            mysupercoolemail@gmail.com --> mysupercoolemail@supercoolcompeny.com
+        """
+        employees = data["Employees"]
+        new_emails = []
 
-        mysupercoolemail@gmail.com --> mysupercoolemail@supercoolcompeny.com
-    """
-    
-    for i in range(0, len(data["Employees"])):
-        email = data[i].get("Email") # Get email
-        email.split('@')[0] # Split the string and keep the part before 'a'
-        new_emails.append(email + "@supercoolcompany.com") # Concat first part with custom domain and replace email
+        for i in range(0, len(employees)):
+            email = employees[i].get("Email") # Get email
+            email.split('@')[0] # Split the string and keep the part before '@'
+            new_emails.append(email + "@supercoolcompany.com") # Concat first part with custom domain and replace email
 
-    return new_emails
+        return new_emails
 
 
-def get_all_new_employees(data):
-    """Get a list of all employees with 0 years of experience, if there is no experience field, assume 0"""
-    return [i for i in data if i.get("Experience", 0) == 0]
+    def get_all_new_employees(self, data):
+        """Get a list of all employees with 0 years of experience, if there is no experience field, assume 0"""
+        return [i for i in data["Employees"] if i["Experience"] == 0]
         
