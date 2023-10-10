@@ -15,7 +15,7 @@ Steps
 
 1. Run tests, and fix errors
 1. Add functionality to increment each employees experience by 1 year (Uncomment final test in `tests.py`)
-
+1. Fill out the Cloudformation so that it will create an S3 bucket with the given BucketName and output that name in the outputs section.
 
 Bonus
 1. Rewrite "generate_new_emails" method to conform to python recommendations
