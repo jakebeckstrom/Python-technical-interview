@@ -16,7 +16,7 @@ class Employee:
 
     @property
     def experience(self):
-        return self.employee.get("Experience", 0)
+        return self.employee.get("Experience", "0")
 
 
 
