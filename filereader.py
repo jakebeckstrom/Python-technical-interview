@@ -59,5 +59,5 @@ class FileReader:
 
     def get_all_new_employees(self, data):
         """Get a list of all employees with 0 years of experience, if there is no experience field, assume 0"""
-        return [i for i in data["Employees"] if i["Experience"] == 0]
+        return [i for i in data["Employees"] if i["Experience"] == "0"]
         

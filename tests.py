@@ -23,6 +23,7 @@ def test_get_all_new_employees():
     filereader = FileReader("data.json")
     data = filereader.read_file()
     new_employees = filereader.get_all_new_employees(data)
+    assert len(new_employees) == 2
 
 # def test_update_experience():
 #     filereader = FileReader("data.json")
